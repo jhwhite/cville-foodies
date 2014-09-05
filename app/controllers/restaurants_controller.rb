@@ -66,6 +66,13 @@ class RestaurantsController < ApplicationController
     @restaurant.reviews << Review.create!(review_params)
     redirect_to :action => "show", :id => params[:id]
   end
+  
+  def search
+    pattern = params[:searchFor].downcase
+    pattern = "%" + pattern + "%"
+    #@reviews = Review.find_by_sql["SELECT * FROM reviews WHERE UPPER(title) "]
+    @restaurants = Restaurant.where("LOWER(name) like ?", pattern)
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
