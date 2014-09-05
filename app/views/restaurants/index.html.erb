@@ -29,3 +29,5 @@
 <% for restaurant in @restaurants %>
 <%= link_to restaurant.name, restaurant %> <br />
 <% end %>
+<br />
+<%= link_to 'New Restaurant', new_restaurant_path, :class => 'button small radius' %>

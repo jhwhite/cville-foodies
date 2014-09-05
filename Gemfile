@@ -29,6 +29,10 @@ gem 'ratyrate'
 # gem for slugs instead of IDs
 gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 
+# gem for sunspot searching using solr
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

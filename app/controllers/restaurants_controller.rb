@@ -4,8 +4,13 @@ class RestaurantsController < ApplicationController
   # GET /restaurants
   # GET /restaurants.json
   def index
+    @search = Restaurant.search do
+      fulltext params[:search]
+    end
+    
     # @restaurants = Restaurant.all
-    @restaurants = Restaurant.order('id desc').limit(5)
+    @restaurants = @search.results
+    #@restaurants = Restaurant.order('id desc').limit(5)
   end
 
   # GET /restaurants/1
@@ -67,12 +72,12 @@ class RestaurantsController < ApplicationController
     redirect_to :action => "show", :id => params[:id]
   end
   
-  def search
-    pattern = params[:searchFor].downcase
-    pattern = "%" + pattern + "%"
-    #@reviews = Review.find_by_sql["SELECT * FROM reviews WHERE UPPER(title) "]
-    @restaurants = Restaurant.where("LOWER(name) like ?", pattern)
-  end
+#   def search
+#     pattern = params[:searchFor].downcase
+#     pattern = "%" + pattern + "%"
+#     #@reviews = Review.find_by_sql["SELECT * FROM reviews WHERE UPPER(title) "]
+#     @restaurants = Restaurant.where("LOWER(name) like ?", pattern)
+#   end
 
   private
     # Use callbacks to share common setup or constraints between actions.

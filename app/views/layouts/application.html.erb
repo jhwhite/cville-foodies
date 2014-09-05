@@ -40,7 +40,18 @@
 
         <!-- Left Nav Section -->
         <ul class="left">
-
+          <li class="has-form">
+            <div class="row collapse">
+              <div class="large-8 small-9 columns">
+                <%= form_tag restaurants_path, :method => :get do %>
+                <%= text_field_tag :search, params[:search], :placeholder=> "Find a restaurant" %>
+                <% end %>
+              </div>
+              <div class="large-4 small-3 columns">
+                <a href="#" class="alert button expand">Search</a>
+              </div>
+            </div>
+          </li>
         </ul>
       </section>
     </nav>
