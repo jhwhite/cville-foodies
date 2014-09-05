@@ -22,7 +22,9 @@
 <hr />
 <h3>Submit new review:</h3>
  <%= form_tag :action => 'review', :id => @restaurant do %>
-  <h4>Poster: </h4><%= text_field "review", "poster" %><br /><br />
+  <h4>Poster: </h4>
+  <%= text_field "review", "poster" %>
+
   <!--<strong>Date: </strong><%= datetime_select "review", "date" %><br /><br />-->
   <h4>Review:</h4><br />
   <%= text_area "review", "article", :rows => 5 %><br />

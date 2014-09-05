@@ -23,6 +23,12 @@ gem 'devise'
 # gem for adding gravatars
 gem 'gravtastic'
 
+# gem for adding ratings for restaurants
+gem 'ratyrate'
+
+# gem for slugs instead of IDs
+gem 'friendly_id', '~> 5.0.0' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
