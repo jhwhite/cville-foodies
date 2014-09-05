@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+<h2><%= @restaurant.name %></h2>
+
+<!--
+<p>
+  <strong>Name:</strong>
+  <%= @restaurant.name %>
+</p>
+-->
+
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+<%= link_to 'Back', restaurants_path %>
+
+<p>
+  <h3>Reviews:</h3>
+<% @restaurant.reviews.reverse.each do |review| %>
+    posted by: <%= review.poster %><br />
+    written: <%= time_ago_in_words(review.created_at) %> ago<br />
+    Review:<br />
+    <%= review.article %><br /><br />
+  <% end %>
+</p>
+<hr />
+<h3>Submit new review:</h3>
+ <%= form_tag :action => 'review', :id => @restaurant do %>
+  <h4>Poster: </h4><%= text_field "review", "poster" %><br /><br />
+  <!--<strong>Date: </strong><%= datetime_select "review", "date" %><br /><br />-->
+  <h4>Review:</h4><br />
+  <%= text_area "review", "article", :rows => 5 %><br />
+  <%= submit_tag "Review" %>
+<% end %>
