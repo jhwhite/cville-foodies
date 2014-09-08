@@ -1,5 +1,5 @@
 <h2><%= @restaurant.name %></h2>
-<h3>Rating: <%= number_with_precision(@overall, precision:2) %></h3>
+<h3>Rating: <%= number_with_precision(@overall, precision:2) %> out of 5.</h3>
 
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>
