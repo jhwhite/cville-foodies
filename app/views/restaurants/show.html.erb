@@ -1,29 +1,35 @@
 <h2><%= @restaurant.name %></h2>
-
-<!--
-<p>
-  <strong>Name:</strong>
-  <%= @restaurant.name %>
-</p>
--->
+<h3>Rating: <%= number_with_precision(@overall, precision:2) %></h3>
 
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>
 
-<p>
   <h3>Reviews:</h3>
 <% @restaurant.reviews.reverse.each do |review| %>
-    posted by: <%= review.poster %><br />
-    written: <%= time_ago_in_words(review.created_at) %> ago<br />
-    Review:<br />
-    <%= review.article %><br /><br />
+<strong>posted by: </strong><%= review.poster %><br />
+<strong>written: </strong><%= time_ago_in_words(review.created_at) %> ago<br />
+<strong>Rating: </strong><%= review.rating %><br />
+<strong>Review: </strong><br />
+<%= review.article %><br /><br />
   <% end %>
-</p>
+
 <hr />
 <h3>Submit new review:</h3>
  <%= form_tag :action => 'review', :id => @restaurant do %>
   <h4>Poster: </h4>
   <%= text_field "review", "poster" %>
+
+  <h4>Rating:</h4>
+  <%= radio_button("review", "rating", "1") %>
+  <%= label_tag(:rating_1, "1") %>
+  <%= radio_button("review", "rating", "2") %>
+  <%= label_tag(:rating_2, "2") %>
+  <%= radio_button("review", "rating", "3") %>
+  <%= label_tag(:rating_3, "3") %>
+  <%= radio_button("review", "rating", "4") %>
+  <%= label_tag(:rating_4, "4") %>
+  <%= radio_button("review", "rating", "5") %>
+  <%= label_tag(:rating_5, "5") %>
 
   <!--<strong>Date: </strong><%= datetime_select "review", "date" %><br /><br />-->
   <h4>Review:</h4><br />

@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy, :review]
-
+  
   # GET /restaurants
   # GET /restaurants.json
   def index
@@ -16,6 +16,7 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/1
   # GET /restaurants/1.json
   def show
+    @overall = overall_rating
   end
 
   # GET /restaurants/new
@@ -72,6 +73,16 @@ class RestaurantsController < ApplicationController
     redirect_to :action => "show", :id => params[:id]
   end
   
+  def overall_rating
+    test = 0.0
+    count = 0
+    @restaurant.reviews.each do |review|
+      test += review.rating
+      count += 1
+    end
+    text = test/count
+  end
+  
 #   def search
 #     pattern = params[:searchFor].downcase
 #     pattern = "%" + pattern + "%"
@@ -91,6 +102,6 @@ class RestaurantsController < ApplicationController
     end
   
   def review_params
-    params.require(:review).permit(:poster, :article)
+    params.require(:review).permit(:poster, :rating, :article)
   end
 end
