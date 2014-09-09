@@ -20,3 +20,21 @@ To reindex run:
 
 `rake sunspot:reindex`
 
+##Errors
+If you get this error:
+
+`RSolr::Error::Http in RestaurantsController#index`
+
+Follow these steps to solve
+
+Stop sunspot: 
+`rake sunspot:solr:stop`
+
+Remove the solr folder in the cville-foodies directory
+`rm -rf solr`
+
+Start sunspot
+`rake sunspot:solr:start`
+
+Then reindex:
+`rake sunpost:reindex.`
