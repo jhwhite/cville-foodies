@@ -31,7 +31,7 @@ gem 'sunspot_rails'
 gem 'sunspot_solr'
 
 # adds gem for minitest
-gem 'minitest' '~> 4.7.5'
+gem 'minitest'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
