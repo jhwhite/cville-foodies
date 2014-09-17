@@ -80,7 +80,7 @@ class RestaurantsController < ApplicationController
       test += review.rating
       count += 1
     end
-    text = test/count
+    text = test / count
   end
   
 #   def search
